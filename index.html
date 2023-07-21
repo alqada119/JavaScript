@@ -3,42 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPSGAME</title>
-    <link rel="stylesheet" href="styles.css">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  /> 
-<!-- framework for css animations -->
+    <title>Calculator || Ahmed</title>
+    <link rel="icon" type="image/png" href="/image/calc.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="math.js" type="text/javascript"></script>
 </head>
 <body>
-    <div class="con">
-        <div class="user">
-            <div class="holder">
-                <p id="display">Rock</p>
-                <div class="buttons">
-                <button id="left"><i class="arrow left"></i></button>
-                <button id="right"><i class="arrow right"></i></button>
-                </div>
-            
-            </div>
+    
+    <div class="calc">
+        <button id="Reset">AC</button>
+        <div class="actual">
+            <div class="answer">0</div>
+        <div class="row">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button id="*">&times;</button>
         </div>
-        <div class="image"><button id="play"><img src="images/sword.jpg" alt=""></button>
-        <p id="result"></p>
+        <div class="row">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>&minus;</button>
         </div>
-        <div class="pc">
-        <p id="display-pc">The PC chooses</p>
-        <p id="answer"></p>
-            </div>
-            
+        <div class="row">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>&divide;</button>
         </div>
-        
-
+        <div class="row">
+            <button>0</button>
+            <button>.</button>
+            <button>&equals;</button>
+            <button>&plus;</button>
+        </div>
+        </div>
         
     </div>
-    <div class="hell"><img id="Rock"src="images/Rock.jpg" alt="">
-        <img id="Paper"src="images/Paper.jpg" alt="">
-        <img id="Scissor" src="images/Scissor.jpg" alt=""></div>
-    <script src="index.js"></script>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
