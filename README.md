@@ -1,1 +1,1 @@
-# JavaScript MiniProjects
+# JavaScript||Html||CSS MiniProjects
