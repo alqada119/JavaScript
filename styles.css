@@ -1,78 +1,70 @@
-*{
-  font-family: fantasy;
-  font-size: 30px;
+:root{
+    --dark-color:#00008b;
+    --light-color:#00ffff;
 }
-.arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 3px;
-  }
-  
-  .right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-  
-  .left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-  }
-  .con{
-    height: auto;
-    width: 80%;
-    border: 3px solid black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex: 1 1 auto;
-    margin-left: 200px;
-    margin-top: 200px;
-
-  }
-  .user{
-    display:  flex;
-    flex-direction: column;
-    width: 100px;
-    height:400px;
-    justify-content: center;
-    align-items: center;
-  }
-  p{
-    margin-left: 8px;
-  }
-#display-pc{
-  margin-right: 30px;
+#dark{
+    fill: var(--dark-color);
+    
+    
 }
-.image{
-  width: fit-content;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#light{
+    fill: var(--light-color);
+    
+}
+#dark1{
 
 }
-img{
-  width:90px;
+svg{
+    
+    cursor: pointer;
 }
-.play{
-  width: 80px;
+#dark1,#dark3,#dark2{
+    transition: all 1s ease;
 }
-.holder{
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content: center;
+#dark3{
+    transform: translateX(-100%);
 }
-p{
-  text-align: center;
+#dark3:hover{
+    transform: translateX(-100%);
 }
-.hell{
-  display: flex;
-  width:97%;
-  justify-content: center;
+svg:hover #dark1{
+    transform: translateX(20%);
+
 }
-.display-pc{
-  position: absolute;
+svg:hover #dark2{
+    transform: translateX(40%);
+    opacity:0;
+
+}
+svg:hover #dark3{
+    transform: translateX(0%);
+    
+}
+#skeleton{
+    animation: fadeup 3s ease forwards;
+    opacity: 0;
+}
+@keyframes fadeup {
+    from{
+        opacity: 0;
+        transform: translateY(20%);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+#bolt g{
+    animation: dropin 1s;
+}
+@keyframes dropin{
+    from{
+        
+        transform: translateY(-20%);
+    }
+    to{
+        opacity: 100%;
+        transform: translateY(0%);
+    }
 }
