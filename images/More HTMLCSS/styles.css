@@ -1,0 +1,70 @@
+:root{
+    --dark-color:#00008b;
+    --light-color:#00ffff;
+}
+#dark{
+    fill: var(--dark-color);
+    
+    
+}
+#light{
+    fill: var(--light-color);
+    
+}
+#dark1{
+
+}
+svg{
+    
+    cursor: pointer;
+}
+#dark1,#dark3,#dark2{
+    transition: all 1s ease;
+}
+#dark3{
+    transform: translateX(-100%);
+}
+#dark3:hover{
+    transform: translateX(-100%);
+}
+svg:hover #dark1{
+    transform: translateX(20%);
+
+}
+svg:hover #dark2{
+    transform: translateX(40%);
+    opacity:0;
+
+}
+svg:hover #dark3{
+    transform: translateX(0%);
+    
+}
+#skeleton{
+    animation: fadeup 3s ease forwards;
+    opacity: 0;
+}
+@keyframes fadeup {
+    from{
+        opacity: 0;
+        transform: translateY(20%);
+
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+#bolt g{
+    animation: dropin 1s;
+}
+@keyframes dropin{
+    from{
+        
+        transform: translateY(-20%);
+    }
+    to{
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
