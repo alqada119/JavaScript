@@ -1,71 +1,119 @@
-var left=document.querySelector("#left");
-var right=document.querySelector("#right")
-var display=document.querySelector("p");
-var pointer=0;
-var display2=document.querySelector(".holder");
-lists=["Rock","Paper","Scissor"];
-let size=lists.length;
-var displayresult=document.querySelector("#result");
-var ans=document.querySelector("#answer");
-function changedisplay(){
-    left.addEventListener("click",()=>{
-        pointer--;
-        if(pointer<0){
-            pointer=size-1;
+const Gameboard=(() =>{
+    let board=["","","","","","","","",""]
+    const getboard=()=>board
+    const placexo=(index,marker)=>{
+        if (index>=0&&index<board.length&&board[index]===""){
+            board[index]=marker
+            return true
         }
-        display.innerHTML=lists[pointer]
-    })
-    right.addEventListener("click",()=>{
-        pointer++;
-        if(pointer>=size){
-            pointer=0;
-        }
-        display.innerHTML=lists[pointer]
-    })
-    
-};
+        return false
+    }
+    return {getboard,placexo}
+})();
+// console.log(Gameboard.getboard)
 
 
-function replaceimage(){
-    let button2=document.querySelector("#play");
-    button2.addEventListener("click",()=>{
-        let image=document.querySelectorAll("img");
-        image.forEach(Element=>{
-            if(display.innerHTML===Element.getAttribute("id")){
-                display2.insertBefore(Element,display)
-            }
-        })
-        game(); 
-    })
-    
+
+// function rendertodom(){
+
+//     };  
+// })}
+
+const player=(name,marker)=>{
+    const getname=()=>name
+    const getmarker=()=>marker
+    return {getname,getmarker}
 }
 
-function game(){
-    var result="";
-    for(i=0;i<size;i++){
-        var pc=lists[Math.floor(Math.random()*size)]
-    }
-    let playerChoice=display.innerHTML;
-    console.log("Player chooses: " + playerChoice);
-    console.log("PC chooses: " + pc);
-    ans.innerHTML=pc;
 
-    // Determine the winner
-    if (playerChoice === pc) {
-        result="Tie!";
-        displayresult.innerHTML="Tie"
-    } else if (
-        (playerChoice === "Rock" && pc === "Scissor") ||
-        (playerChoice === "Paper" && pc === "Rock") ||
-        (playerChoice === "Scissor" && pc === "Paper")
-    ) {
-        result="Player wins!";
-    } else {
-        result="PC wins!";
-    }
+
+const displaygame=(()=>{
+    let first=true
+    const player1=player("Ahmed","X")
+    const player2=player("Anas","O")
+    const display=document.querySelector(".display")
+    const blocks=document.querySelectorAll("div")
+    display.innerHTML=player1.getname()
+    blocks.forEach(block => {
+        if(block.id){
+            block.addEventListener("click",()=>{
+                if(first){           
+                    if(Gameboard.placexo(block.id,player1.getmarker())){
+                        Gameboard.placexo(block.id,player1.getmarker())
+                        block.innerHTML=player1.getmarker()
+                        if(checkgame(player1.getmarker())){
+                            display.innerHTML=player1.getname()+" Won"
+                            
+                        }
+                        else{
+                            first=!first
+                            display.innerHTML=player2.getname()
+                        }
+                        
+                    }
+                    
+                }
+                else{if(Gameboard.placexo(block.id,player2.getmarker())){
+                    Gameboard.placexo(block.id,player2.getmarker())
+                    block.innerHTML=player2.getmarker()
+                    if(checkgame(player2.getmarker())){
+                        display.innerHTML=player2.getname()+" Won"
+                        
+                    }
+                    else{
+                        first=!first
+                        display.innerHTML=player1.getname()
+                }
+                    
+                }}
+                
+      })}
+
     
-    displayresult.innerHTML=result
+    
+})})()
+
+let reload=document.querySelector("#re")
+reload.addEventListener("click",()=>{
+    window.location.reload();
+})
+
+
+function checkrow(player) {
+    const Gameboards = Gameboard.getboard();
+    for (let i = 0; i < 9; i += 3) {
+        if (Gameboards[i] === player && Gameboards[i + 1] === player && Gameboards[i + 2] === player) {
+            console.log(player + " Wins");
+            return true;
+        }
+    }
+    return false;
 }
 
-changedisplay();
-replaceimage();
+function checkcol(player) {
+    const Gameboards = Gameboard.getboard();
+    for (let i = 0; i < 3; i++) {
+        if (Gameboards[i] === player && Gameboards[i + 3] === player && Gameboards[i + 6] === player) {
+            console.log(player + " Wins");
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkdiag(player) {
+    const Gameboards = Gameboard.getboard();
+    if (Gameboards[0] === player && Gameboards[4] === player && Gameboards[8] === player) {
+        console.log(player + " Wins");
+        return true;
+    }
+    if (Gameboards[2] === player && Gameboards[4] === player && Gameboards[6] === player) {
+        console.log(player + " Wins");
+        return true;
+    }
+    return false;
+}
+
+function checkgame(player) {
+    return checkrow(player) || checkcol(player) || checkdiag(player);
+}
