@@ -1,0 +1,29 @@
+.content{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.board{
+    width: 50%;
+    height: 50%;
+    background-color: rgb(26, 24, 24);
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+.board>div{
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: wheat;
+    
+}
+.display{
+    color:rgba(68, 19, 19, 0.226);
+    font-weight: bold;
+    font-size: 30px;
+}
